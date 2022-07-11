@@ -1,0 +1,13 @@
+install.packages("ggpubr")
+library("ggpubr")
+Name of the data file:A
+
+A<-ggboxplot(As, x = "District", y = "IrriAs", fill = "District",add = "jitter",
+            palette = c("#00AFBB", "#E7B800","#FC4E07","#09622A","#FFE0B3","#00C3FF"),
+            xlab="Districts",ylab = "Irrigation water As (mg L-1)")+
+            theme_gray()+
+  stat_compare_means(method = "anova", label.y = 0.80)+ # Add global p-value
+  stat_compare_means(label = "p.signif", method = "t.test", # Pairwise comparison against all
+                     ref.group = ".all.")
+     
+A
