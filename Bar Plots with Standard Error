@@ -1,5 +1,6 @@
 install.packages("ggpubr")
 library("ggpubr")
+The name of data file: "HAFA"
 
 A<-ggbarplot(HAFA, x = "Vermicompost", y = "Count",
              fill="Days", color = "Days",
