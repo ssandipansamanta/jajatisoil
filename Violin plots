@@ -4,6 +4,8 @@ library("ggpubr")
 #Graphs Violin plots
 # Add global p-value
 # Add pairwise comparisons p-value
+# The name of data file: "Mica"
+
 
 my_comparisons <- list( c("Zone1", "Zone2"), c("Zone1", "Zone3"), c("Zone2", "Zone3") )
 
