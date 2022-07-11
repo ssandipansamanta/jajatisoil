@@ -1,5 +1,6 @@
 library(ggpubr)
 # Stacked bar plots, add labels inside bars
+# The name of data file: "HAFA"
 
 ggbarplot(Graphs, x = "HAFA", y = "As",
           fill = "Condition", color = "Condition", 
