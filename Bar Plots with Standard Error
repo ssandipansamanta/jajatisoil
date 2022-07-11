@@ -1,0 +1,38 @@
+install.packages("ggpubr")
+library("ggpubr")
+
+A<-ggbarplot(HAFA, x = "Vermicompost", y = "Count",
+             fill="Days", color = "Days",
+             xlab="Types of Vermicompost",ylab = "Earthworm Count(per kg)",
+             add = "mean_sd",add.params = list(color="black"),
+             palette = "npg",
+             position = position_dodge(0.9))+theme_gray()
+A
+
+B<-ggbarplot(HAFA, x = "Vermicompost", y = "Biomass",
+             fill="Days", color = "Days",
+             xlab="Types of Vermicompost",ylab = "Microbial Biomass C (mg/kg)",
+             add = "mean_sd",add.params = list(color="black"),
+             palette = "npg",
+             position = position_dodge(0.9))+theme_gray()
+B
+
+C<-ggbarplot(HAFA, x = "Vermicompost", y = "Respiration",
+             fill="Days", color = "Days",
+             xlab="Types of Vermicompost",ylab = "Respiration rate (μg CO2/g/soil/hr)",
+             add = "mean_sd",add.params = list(color="black"),
+             palette = "npg",
+             position = position_dodge(0.9))+theme_gray()
+C
+
+D<-ggbarplot(HAFA, x = "Vermicompost", y = "Biomass",
+             fill="Days", color = "Days",
+             xlab="Types of Vermicompost",ylab = "C:N ratio",
+             add = "mean_sd",add.params = list(color="black"),
+             palette = "npg",
+             position = position_dodge(0.9))+theme_gray()
+D
+
+ggarrange(A,B,C,D,
+          nrow = 2,ncol=2,align = "hv",labels = "AUTO",
+          common.legend = TRUE,legend = "right" )
