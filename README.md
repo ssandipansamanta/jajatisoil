@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @jajatisoil
-- 👀 I’m interested in statistical analysis/Machine learning (Random Forest,CART,KNN)related to agricultural and environmental science
+- 👀 I’m interested in statistical analysis/Machine learning (Logistic regression,GBM,Random Forest,CART,KNN)related to agricultural and environmental science
 - 🌱 I’m currently pursuing PhD
 - 📫 How to reach me jajati.bckv@gmail.com
 
