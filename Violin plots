@@ -1,0 +1,44 @@
+install.packages("ggpubr")
+library("ggpubr")
+
+#Graphs Violin plots
+# Add global p-value
+# Add pairwise comparisons p-value
+
+my_comparisons <- list( c("Zone1", "Zone2"), c("Zone1", "Zone3"), c("Zone2", "Zone3") )
+
+A<-ggviolin(Mica, x = "Zone", y = "WSNi", fill = "Zone",
+            palette = c("#00AFBB", "#E7B800","#FC4E07"),
+            xlab="Zone of sampling",ylab = "Water Soluble Ni (mg kg-1)",
+            add = "boxplot", add.params = list(fill = "white"))+theme_gray()+
+  stat_compare_means(comparisons = my_comparisons)+ 
+  stat_compare_means(label.y = 15)     
+A
+
+B<-ggviolin(Mica, x = "Zone", y = "EXNi", fill = "Zone",
+            palette = c("#00AFBB", "#E7B800","#FC4E07"),
+            xlab="Zone of sampling",ylab = "Exchangeable Ni (mg kg-1)",
+            add = "boxplot", add.params = list(fill = "white"))+theme_gray()+
+  stat_compare_means(comparisons = my_comparisons)+ 
+  stat_compare_means(label.y = 55)   
+B
+
+C<-ggviolin(Mica, x = "Zone", y = "WSCr", fill = "Zone",
+            palette = c("#00AFBB", "#E7B800","#FC4E07"),
+            xlab="Zone of sampling",ylab = "Water Soluble Cr (mg kg-1)",
+            add = "boxplot", add.params = list(fill = "white"))+theme_gray()+
+  stat_compare_means(comparisons = my_comparisons)+ 
+  stat_compare_means(label.y = 45)   
+C
+D<-ggviolin(Mica, x = "Zone", y = "EXCr", fill = "Zone",
+            palette = c("#00AFBB", "#E7B800","#FC4E07"),
+            xlab="Zone of sampling",ylab = "Exchangeable Cr (mg kg-1)",
+            add = "boxplot", add.params = list(fill = "white"))+theme_gray()+
+  stat_compare_means(comparisons = my_comparisons)+ 
+  stat_compare_means(label.y = 120)   
+D
+# Arranging the Plots
+ggarrange(A,B,C,D,nrow =2,ncol=2,align = "hv",
+          labels = "AUTO",common.legend = TRUE,legend = "right" )
+
+
