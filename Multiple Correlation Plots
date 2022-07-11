@@ -1,0 +1,33 @@
+Name of the data file: "Graphs"
+
+library(psych)
+pairs.panels(Graphs,
+             gap = 0,
+             method = "pearson",
+             cor = TRUE,sclae= TRUE,stars = TRUE,
+             hist.col = "skyblue",cex.cor = 1,
+             alpha = 0.05,
+             pch=20)
+
+
+
+library(GGally)
+ggpairs(Graphs, method="pearsons")
+
+
+
+library("correlation")
+library("corrplot")
+M<-correlation(Graphs)
+M
+#Plot1
+corrplot(as.matrix(M), is.corr = FALSE,type="lower", order="hclust",addCoef.col = "black")
+
+#Plot2
+col<- colorRampPalette(c("red", "white", "blue"))(20)
+corrplot(as.matrix(M),method="ellipse", is.corr = FALSE, type="lower", order="hclust",
+         col=col,addCoef.col = "black")
+
+#Plot3
+corrplot(as.matrix(M), method="ellipse", is.corr = FALSE, type="lower", order="hclust", col=c("gray", "black"),
+         bg="white")
