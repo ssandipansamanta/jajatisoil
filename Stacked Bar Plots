@@ -1,0 +1,9 @@
+library(ggpubr)
+# Stacked bar plots, add labels inside bars
+
+ggbarplot(Graphs, x = "HAFA", y = "As",
+          fill = "Condition", color = "Condition", 
+          palette = c("blue", "black"),
+          label = TRUE, lab.col = "white", lab.pos = "in",
+          xlab = "Types of HA and FA from different Vermicomposts",
+          ylab="Arsenic (mg kg-1)")+ theme(axis.text=element_text(size=12))
