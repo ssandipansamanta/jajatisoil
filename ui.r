@@ -1,5 +1,6 @@
 library(shiny)
 library("shinydashboard")
+library(shinyWidgets)
 
 ui <- dashboardPage(
   dashboardHeader(title = "Arsenic Prediction in Rice Grain"),
@@ -9,6 +10,14 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
+    # tags$img(
+    #   src = "C:/Users/sandipan.samanta/Documents/research/shinyapp/predictionhazard/input/rice_image_1.jpg",
+    #   style = 'position: absolute'
+    # ),
+    setBackgroundImage(
+      src = "rice_image_2.jpeg",
+      shinydashboard = TRUE
+      ),
     tabItems(
       tabItem(
         tabName = "predictionTab",
