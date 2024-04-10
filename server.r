@@ -1,10 +1,20 @@
 library(shiny)
 library("caret")
-server <- function(input, output) {  
-  RF <- readRDS('model.RData')
-  # Perform prediction based on user inputs
-  output$prediction <- renderPrint({
-    req(input$predictBtn)
+server <- function(input, output) {
+  
+  output$user_input <- renderTable({
+    data.frame(
+      OC = input$OC,
+      pH=input$pH,
+      AvP=input$AvP,
+      AvFe = input$AvFe,
+      BAs = input$BAs
+    )
+  })  
+  
+  
+  
+  output$soil_condition <- renderText({
     new_data <- data.frame(
       OC = input$OC,
       pH=input$pH,
@@ -12,14 +22,14 @@ server <- function(input, output) {
       AvFe = input$AvFe,
       BAs = input$BAs
     )
-    print(new_data)
-    prediction <- predict(RF, newdata = new_data, type = "raw")
-    if (prediction == ">MTC") {
-      "Rice grain Arsenic Content: MORE than 350 μg/kg as per Codex recommendation"
-    } else if (prediction == "<MTC") {
-      "Rice grain Arsenic Content: LESS than 350 μg/kg as per Codex recommendation"
+    RF <- readRDS('model.RData')
+    model_prediction <- predict(RF, newdata = new_data, type = "raw")
+    if (model_prediction == "<MTC") {
+      soil_condition = HTML('<p> <ol> Rice grain Arsenic Content: <span style="color:green" > <b> LESS </b> </span> than 350 μg/kg as per Codex recommendation </ol> </p>')
+    } else if (model_prediction == ">MTC") {
+      soil_condition = HTML('<p> <ol> Rice grain Arsenic Content: <span style="color:red" > <b> MORE </b> </span>than 350 μg/kg as per Codex recommendation </ol> </p>')
     } else {
-      "Grain Arsenic Content: Unknown"
+      soil_condition = 0
     }
   })
 }
